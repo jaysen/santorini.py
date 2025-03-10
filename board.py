@@ -5,10 +5,10 @@ class Board:
         self.workers = {}  # Maps worker IDs to positions (row, col)
 
     def display(self):
-        print("  0 1 2 3 4")
-        print(" +-----------+")
+        print("     0  1  2  3  4")
+        print("  +-----------------+")
         for row in range(5):
-            print(f"{row}|", end=' ')
+            print(f"{row} |", end=' ')
             for col in range(5):
                 worker_symbol = None
                 for worker, pos in self.workers.items():
@@ -16,11 +16,11 @@ class Board:
                         worker_symbol = worker
                         break
                 if worker_symbol:
-                    print(worker_symbol, end=' ')
+                    print(f"{worker_symbol:2}", end=' ')
                 else:
-                    print(self.grid[row][col], end=' ')
-            print("|")
-        print(" +-----------+")
+                    print(f"{self.grid[row][col]:2}", end=' ')
+            print(" |")
+        print("  +-----------------+")
 
     def place_worker(self, worker_id, row, col):
         if (row, col) not in self.workers.values():
